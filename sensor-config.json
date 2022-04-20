@@ -1,0 +1,114 @@
+{
+	"sensorNode": {
+		"version": {
+			"hw": 3,
+			"sw": 3.1
+		},
+		"serviceId": "dku-jinri.env",
+		"defaultTags": {
+		},
+		"device": {
+			"hdmi": 0,
+			"led": 1,
+			"display": {
+				"enable": 0,
+				"updateInterval": 1,
+				"style": 1
+			},
+			"update": {
+				"server": "git://github.com/EnergyIoTLab/dankook-jinri-config.git",
+				"time": "00:00:00",
+				"interval": 0
+			},
+			"restart": {
+				"enable": 1,
+				"time": "02:00:00"
+			},
+			"flokeepalive":{
+				"reboot": 1
+			}
+		},
+		"sensors": [
+			{
+				"name": "forwarder",
+				"enable": 0,
+				"role": "gw"
+			},
+			{
+				"name": "blescanner",
+				"enable": 0,                
+				"serviceId": "keti-f4-bt"	
+			},
+			{
+				"name": "pm",
+				"enable": 1
+			},
+			{
+				"name": "temperature",	 
+				"model": 2.1,
+				"enable": 1
+			},
+			{
+				"name": "lx",
+				"model": 2.1,
+				"enable": 1
+			},
+			{
+				"name": "sound",
+				"enable": 1
+			},
+			{
+				"name": "co2",
+				"enable": 1
+			},
+			{
+				"name": "voc",
+				"enable": 0
+			},
+			{
+				"name": "hcho",
+				"enable": 1
+			},
+			{
+				"name": "microwave",
+				"enable": 1
+			},
+			{
+				"name": "ir",
+				"enable": 0
+			}
+		],
+		"servers": [		
+			{
+				"name": "ingressRouter",
+				"enable": 1,
+				"protocol": "http",
+				"address": "http://io.energyiotlab.com:40001/v1/sensors"
+			},
+			{
+				"name": "kafka_etri",
+				"enable": 0,
+				"protocol": "kafka",
+				"topic": "etri-d12-f5",
+				"address": "129.254.88.205:9092"
+			},
+			{
+				"name": "modbus",
+				"enable": 1,
+				"protocol": "modbus"
+			},
+			{
+				"name": "mqtt",
+				"enable": 0,
+				"protocol": "mqtt",
+				"channel": "sensor-data",
+				"address": "keti2.energyiotlab.com:31883"
+			},
+			{
+				"name": "nFrameSempio",
+				"enable": 0,
+				"protocol": "udp",
+				"address": "192.168.1.211:8888"
+			}		]
+	}
+}
